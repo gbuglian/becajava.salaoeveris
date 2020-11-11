@@ -86,7 +86,7 @@ public class ServicoService {
 
 		response.setServico(lista);
 		response.statusCode = 200;
-		response.message = "Clientes obtidos com sucesso.";
+		response.message = "Serviços obtidos com sucesso.";
 
 		return response;
 	}
