@@ -1,22 +1,23 @@
 package br.salaoEveris.app.request;
 
-import java.util.Calendar;
+
+import java.util.Date;
 
 import br.salaoEveris.app.model.Cliente;
 import br.salaoEveris.app.model.Servico;
 
 public class AgendamentoRequest {
 	
-	private Calendar dataHora;
+	private Date data;
 	private Servico servico;
 	private Cliente cliente;
 
-	public Calendar getDataHora() {
-		return dataHora;
+	public Date getdata() {
+		return data;
 	}
 
-	public void setDataHora(Calendar dataHora) {
-		this.dataHora = dataHora;
+	public void setdata(Date data) {
+		this.data = data;
 	}
 
 	public Servico getServico() {

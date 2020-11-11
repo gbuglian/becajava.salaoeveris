@@ -6,7 +6,7 @@ public class BaseController {
 	 public BaseResponse errorBase = new BaseResponse();
 	 
 	    public BaseController() {
-	        errorBase.StatusCode = 500;
+	        errorBase.statusCode = 500;
 	        errorBase.message = "Erro inesperado";
 	    }
 }

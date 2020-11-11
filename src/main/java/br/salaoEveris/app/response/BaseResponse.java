@@ -3,7 +3,7 @@ package br.salaoEveris.app.response;
 public class BaseResponse {
 	
 	public String message;
-	public int StatusCode;
+	public int statusCode;
 	
 	public String getMessage() {
 		return message;
@@ -12,9 +12,9 @@ public class BaseResponse {
 		this.message = message;
 	}
 	public int getStatusCode() {
-		return StatusCode;
+		return statusCode;
 	}
 	public void setStatusCode(int statusCode) {
-		StatusCode = statusCode;
+		statusCode = statusCode;
 	}
 }

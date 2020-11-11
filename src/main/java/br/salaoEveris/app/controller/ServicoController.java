@@ -27,9 +27,9 @@ public class ServicoController extends BaseController {
 		try {
 			BaseResponse response = service.inserir(request);
 
-			return ResponseEntity.status(response.StatusCode).body(response);
+			return ResponseEntity.status(response.statusCode).body(response);
 		} catch (Exception e) {
-			return ResponseEntity.status(errorBase.StatusCode).body(errorBase);
+			return ResponseEntity.status(errorBase.statusCode).body(errorBase);
 		}
 	}
 
@@ -38,9 +38,9 @@ public class ServicoController extends BaseController {
 		try {
 
 			ServicoResponse response = service.obter(id);
-			return ResponseEntity.status(response.StatusCode).body(response);
+			return ResponseEntity.status(response.statusCode).body(response);
 		} catch (Exception e) {
-			return ResponseEntity.status(errorBase.StatusCode).body(errorBase);
+			return ResponseEntity.status(errorBase.statusCode).body(errorBase);
 		}
 	}
 
@@ -48,9 +48,9 @@ public class ServicoController extends BaseController {
 	public ResponseEntity listar() {
 		try {
 			ServicoListResponse response = service.listar();
-			return ResponseEntity.status(response.StatusCode).body(response);
+			return ResponseEntity.status(response.statusCode).body(response);
 		} catch (Exception e) {
-			return ResponseEntity.status(errorBase.StatusCode).body(errorBase);
+			return ResponseEntity.status(errorBase.statusCode).body(errorBase);
 		}
 	}
 

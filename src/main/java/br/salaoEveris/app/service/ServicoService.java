@@ -22,7 +22,7 @@ public class ServicoService {
 	public BaseResponse inserir(ServicoRequest servicoRequest) {
 		Servico servico = new Servico();
 		BaseResponse base = new BaseResponse();
-		base.StatusCode = 400;
+		base.statusCode = 400;
 
 		if (servicoRequest.getNome() == "") {
 			base.message = "Nome do serviço não informado!";
@@ -39,7 +39,7 @@ public class ServicoService {
 
 		_repository.save(servico);
 
-		base.StatusCode = 201;
+		base.statusCode = 201;
 		base.message = "Serviço inserido com sucesso!";
 		return base;
 
@@ -48,7 +48,7 @@ public class ServicoService {
 	public ServicoResponse obter(Long id) {
 		Optional<Servico> servico = _repository.findById(id);
 		ServicoResponse response = new ServicoResponse();
-		response.StatusCode = 400;
+		response.statusCode = 400;
 
 		if (servico.isEmpty()) {
 			response.message = "Serviço não localizado!";
@@ -74,7 +74,7 @@ public class ServicoService {
 		response.setNome(servico.get().getNome());
 		response.setValor(servico.get().getValor());
 		
-		response.StatusCode = 200;
+		response.statusCode = 200;
 		response.message = "Serviço obtido com sucesso!";
 		
 		return response;
@@ -85,7 +85,7 @@ public class ServicoService {
 		ServicoListResponse response = new ServicoListResponse();
 
 		response.setServico(lista);
-		response.StatusCode = 200;
+		response.statusCode = 200;
 		response.message = "Clientes obtidos com sucesso.";
 
 		return response;

@@ -20,9 +20,9 @@ public class AgendamentoService {
 	public BaseResponse inserir(AgendamentoRequest request) {
 		Agendamento agendamento = new Agendamento();
 		BaseResponse base = new BaseResponse();
-		base.StatusCode = 400;
+		base.statusCode = 400;
 		
-		if(request.getDataHora() == null) {
+		if(request.getdata() == null) {
 			base.message = "Data de agendamento não informado!";
 			return base;
 		}
@@ -39,20 +39,40 @@ public class AgendamentoService {
 		
 		agendamento.setCliente(request.getCliente());
 		agendamento.setServico(request.getServico());
-		agendamento.setData(request.getDataHora());
+		agendamento.setData(request.getdata());
 		
 		_repository.save(agendamento);
 		
-		base.StatusCode = 201;
+		base.statusCode = 201;
 		base.message = "Agendamento Realizado";
 		return base;
 	}
 	
-//	public BaseResponse obter(Long id) {
-//		Optional<Agendamento> agendamento = _repository.findById(id);
-//		AgendamentoResponse response = new AgendamentoResponse();
-	
-//		NÃO DA =(
-//	}
+	public BaseResponse obter(Long id) {
+		Optional<Agendamento> agendamento = _repository.findById(id);
+		AgendamentoResponse response = new AgendamentoResponse();
+		response.statusCode = 400;
+		
+		if(agendamento.isEmpty()) {
+			response.message = "Agendamento não localizado";
+			return response;
+		}
+		
+		if(agendamento.get().getId() == null) {
+			response.message = "Id de agendamento não informado, tente novamente!";
+			return response;
+		}
+		
+		response.setCliente(agendamento.get().getCliente());
+		response.setData(agendamento.get().getData());
+		response.setServico(agendamento.get().getServico());
+		response.setId(agendamento.get().getId());
+		
+		
+		response.statusCode = 200;
+		response.message = "Agendamento obtido com sucesso!";
+		
+		return response;
+	}
 
 }

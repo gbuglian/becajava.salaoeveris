@@ -23,25 +23,28 @@ public class ClienteService {
 	public BaseResponse inserir(ClienteRequest clienteRequest) {
 		Cliente cliente = new Cliente();
 		BaseResponse base = new BaseResponse();
-		base.StatusCode = 400;
 
 		if (clienteRequest.getNome() == "") {
 			base.message = "Erro, nome não inserido!";
+			base.statusCode = 400;
 			return base;
 		}
 
 		if (clienteRequest.getCpf() == "") {
 			base.message = "Erro, CPF não inserido!";
+			base.statusCode = 400;
 			return base;
 		}
 
 		if (clienteRequest.getTelefone() == "") {
 			base.message = "Erro, telefone não inserido!";
+			base.statusCode = 400;
 			return base;
 		}
 
 		if (clienteRequest.getEndereco() == "") {
 			base.message = "Erro, endereço não inserido!";
+			base.statusCode = 400;
 			return base;
 		}
 
@@ -52,7 +55,7 @@ public class ClienteService {
 
 		_repository.save(cliente);
 
-		base.StatusCode = 201;
+		base.statusCode = 201;
 		base.message = "Cliente Inserido com sucesso!";
 
 		return base;
@@ -61,7 +64,7 @@ public class ClienteService {
 	public ClienteResponse obter(Long id) {
 		Optional<Cliente> cliente = _repository.findById(id);
 		ClienteResponse response = new ClienteResponse();
-		response.StatusCode = 400;
+		response.statusCode = 400;
 
 		if (cliente.isEmpty()) {
 			response.message = "Cliente não localizado!";
@@ -83,7 +86,7 @@ public class ClienteService {
 		response.setTelefone(cliente.get().getTelefone());
 		response.setEndereco(cliente.get().getEndereco());
 
-		response.StatusCode = 200;
+		response.statusCode = 200;
 		response.message = "Cliente Obtido com sucesso!";
 
 		return response;
@@ -109,7 +112,7 @@ public class ClienteService {
 
 		response.setClientes(listaResposta);
 
-		response.StatusCode = 200;
+		response.statusCode = 200;
 		response.message = "Clientes obtidos com sucesso.";
 
 		return response;

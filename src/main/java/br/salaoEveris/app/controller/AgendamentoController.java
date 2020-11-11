@@ -2,6 +2,7 @@ package br.salaoEveris.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
 import br.salaoEveris.app.request.AgendamentoRequest;
 import br.salaoEveris.app.response.BaseResponse;
@@ -18,29 +19,29 @@ public class AgendamentoController extends BaseController {
 	public ResponseEntity inserir(@RequestBody AgendamentoRequest request) {
 		try {
 			BaseResponse response = service.inserir(request);
-			return ResponseEntity.status(response.StatusCode).body(response);
+			return ResponseEntity.status(response.statusCode).body(response);
 		} catch (Exception e) {
-			return ResponseEntity.status(errorBase.StatusCode).body(errorBase);
+			return ResponseEntity.status(errorBase.statusCode).body(errorBase);
 		}
 	}
 
-//	@GetMapping(path = "/{dataInicio},{dataFim}")
-//	public ResponseEntity obter(@PathVariable Long id) {
-//		try {
-//			BaseResponse response = service.obter(id);
-//			return ResponseEntity.status(response.StatusCode).body(response);
-//		} catch (Exception e) {
-//			return ResponseEntity.status(errorBase.StatusCode).body(errorBase);
-//		}
-//	}
+	@GetMapping(path = "/{id}")
+	public ResponseEntity obter(@PathVariable Long id) {
+		try {
+			BaseResponse response = service.obter(id);
+			return ResponseEntity.status(response.statusCode).body(response);
+		} catch (Exception e) {
+			return ResponseEntity.status(errorBase.statusCode).body(errorBase);
+		}
+	}
 //
 //	@GetMapping
 //	public ResponseEntity listar() {
 //		try {
 //			BaseResponse response = service.listar();
-//			return ResponseEntity.status(response.StatusCode).body(response);
+//			return ResponseEntity.status(response.statusCode).body(response);
 //		} catch (Exception e) {
-//			return ResponseEntity.status(errorBase.StatusCode).body(errorBase);
+//			return ResponseEntity.status(errorBase.statusCode).body(errorBase);
 //
 //		}
 //	}

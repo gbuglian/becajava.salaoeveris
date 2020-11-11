@@ -1,6 +1,5 @@
 package br.salaoEveris.app.model;
 
-import java.util.Calendar;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,8 +19,7 @@ public class Agendamento {
 	private Long id;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	Date dataAndTime2;
-	private Calendar data;
+	private Date data;
 
 	@ManyToOne
 	@JoinColumn(name = "ServicoId")
@@ -39,19 +37,11 @@ public class Agendamento {
 		this.id = id;
 	}
 
-	public Date getDataAndTime2() {
-		return dataAndTime2;
-	}
-
-	public void setDataAndTime2(Date dataAndTime2) {
-		this.dataAndTime2 = dataAndTime2;
-	}
-
-	public Calendar getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(Calendar data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 
